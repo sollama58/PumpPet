@@ -10,6 +10,7 @@ export interface Trade {
   tokenOutSymbol: string | null
   usdValueIn: number
   usdValueOut: number
+  costBasisUsd: number | null
   realizedPnlUsd: number | null
 }
 

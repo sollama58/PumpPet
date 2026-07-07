@@ -13,6 +13,8 @@
     "moduleDetection": "force",
     "noEmit": true,
 
+    "ignoreDeprecations": "6.0",
+
     /* Explicit paths for packages that lack a "types" export condition in Vite 8 */
     "baseUrl": ".",
     "paths": {
