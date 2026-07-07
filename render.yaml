@@ -8,9 +8,9 @@ services:
     name: pumppet
     env: node
     buildCommand: >
-      cd client && npm install --include=dev && npm run build &&
-      cd ../server && npm install --include=dev && npx prisma generate && npm run build && npx prisma migrate deploy
-    startCommand: node server/dist/index.js
+      cd client && npm install && npm run build &&
+      cd ../server && npm install && npx prisma generate && npm run build && npx prisma migrate deploy
+    startCommand: NODE_ENV=production node server/dist/index.js
     envVars:
       - key: DATABASE_URL
         fromDatabase:
@@ -20,7 +20,5 @@ services:
         sync: false
       - key: BIRDEYE_API_KEY
         sync: false
-      - key: NODE_ENV
-        value: production
       - key: VITE_RPC_ENDPOINT
         sync: false   # Set to: https://mainnet.helius-rpc.com/?api-key=YOUR_KEY
