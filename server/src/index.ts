@@ -23,7 +23,7 @@ app.get('/health', (_: Request, res: Response) => res.json({ ok: true }))
 if (isProd) {
   const clientDist = path.join(__dirname, '../../client/dist')
   app.use(express.static(clientDist))
-  app.get('*', (_: Request, res: Response) => res.sendFile(path.join(clientDist, 'index.html')))
+  app.get(/.*/, (_: Request, res: Response) => res.sendFile(path.join(clientDist, 'index.html')))
 }
 
 app.listen(PORT, () => {
