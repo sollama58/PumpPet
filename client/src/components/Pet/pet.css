@@ -1,0 +1,55 @@
+/* Fire flicker */
+@keyframes flicker {
+  0%,100% { transform: scaleY(1) scaleX(1); opacity: 1; }
+  25%      { transform: scaleY(1.08) scaleX(0.95); opacity: 0.9; }
+  50%      { transform: scaleY(0.95) scaleX(1.05); opacity: 1; }
+  75%      { transform: scaleY(1.05) scaleX(0.97); opacity: 0.95; }
+}
+
+/* Tail wag */
+@keyframes wag {
+  0%,100% { transform: rotate(-15deg); transform-origin: 80% 90%; }
+  50%      { transform: rotate(15deg);  transform-origin: 80% 90%; }
+}
+
+/* Tear drop fall */
+@keyframes tearfall {
+  0%   { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(20px); opacity: 0; }
+}
+
+/* Confetti burst */
+@keyframes confetti {
+  0%   { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(-60px) rotate(720deg); opacity: 0; }
+}
+
+/* Skull float */
+@keyframes skullfloat {
+  0%   { transform: translateY(0) scale(1); opacity: 0.9; }
+  100% { transform: translateY(-50px) scale(0.6); opacity: 0; }
+}
+
+/* Shake on new loss */
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  20%      { transform: translateX(-6px); }
+  40%      { transform: translateX(6px); }
+  60%      { transform: translateX(-4px); }
+  80%      { transform: translateX(4px); }
+}
+
+/* Bounce on gain */
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  40%      { transform: translateY(-12px); }
+  60%      { transform: translateY(-6px); }
+}
+
+.pet-fire { animation: flicker 0.8s ease-in-out infinite; transform-origin: center bottom; }
+.pet-tail-wag { animation: wag 0.5s ease-in-out infinite; }
+.pet-tear { animation: tearfall 1.2s ease-in infinite; }
+.pet-confetti { animation: confetti 1s ease-out forwards; }
+.pet-skull { animation: skullfloat 1.5s ease-out forwards; }
+.pet-shake { animation: shake 0.4s ease-in-out; }
+.pet-bounce { animation: bounce 0.5s ease-in-out; }

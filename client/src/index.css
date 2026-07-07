@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --fire-orange: #ff6b00;
+  --fire-yellow: #ffd700;
+  --green-profit: #22c55e;
+  --red-loss: #ef4444;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #1a0a00;
+  font-family: 'Comic Neue', 'Comic Sans MS', cursive;
+  color: #f5e6d3;
+  min-height: 100svh;
+}
+
+#root {
+  min-height: 100svh;
+}

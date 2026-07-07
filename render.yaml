@@ -1,0 +1,26 @@
+databases:
+  - name: pumppet-db
+    databaseName: pumppet
+    plan: free
+
+services:
+  - type: web
+    name: pumppet
+    env: node
+    buildCommand: >
+      cd client && npm install && npm run build &&
+      cd ../server && npm install && npx prisma generate && npm run build && npx prisma migrate deploy
+    startCommand: node server/dist/index.js
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: pumppet-db
+          property: connectionString
+      - key: HELIUS_API_KEY
+        sync: false
+      - key: BIRDEYE_API_KEY
+        sync: false
+      - key: NODE_ENV
+        value: production
+      - key: VITE_RPC_ENDPOINT
+        sync: false   # Set to: https://mainnet.helius-rpc.com/?api-key=YOUR_KEY

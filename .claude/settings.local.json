@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(node --version)",
+      "PowerShell(npm --version)",
+      "PowerShell(cd c:\\\\VSCode\\\\PumpPet\\\\server; $env:DATABASE_URL=\"postgresql://placeholder\"; npx prisma generate 2>&1 | Select-Object -Last 8)"
+    ]
+  }
+}

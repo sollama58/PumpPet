@@ -1,0 +1,34 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Wallet {
+  address   String   @id
+  createdAt DateTime @default(now())
+  trades    Trade[]
+}
+
+model Trade {
+  id             String   @id @default(cuid())
+  walletAddress  String
+  wallet         Wallet   @relation(fields: [walletAddress], references: [address])
+  signature      String   @unique
+  timestamp      DateTime
+  tokenInMint    String
+  tokenInAmount  Float
+  tokenInSymbol  String?
+  tokenOutMint   String
+  tokenOutAmount Float
+  tokenOutSymbol String?
+  usdValueIn     Float
+  usdValueOut    Float
+  costBasisUsd   Float?
+  realizedPnlUsd Float?
+  createdAt      DateTime @default(now())
+
+  @@index([walletAddress, timestamp])
+}
