@@ -1,5 +1,6 @@
 import { useMemo, useRef, useEffect, useState } from 'react'
 import { PetSVG } from './PetSVG'
+import { BurningHouse } from './BurningHouse'
 import type { PetState } from '../../types'
 import './pet.css'
 
@@ -34,8 +35,10 @@ export function Pet({ netPnlUsd, portfolioUsd }: Props) {
   }, [state])
 
   return (
-    <div className={`transition-all duration-500 ${pulseClass}`}>
-      <PetSVG state={state} />
-    </div>
+    <BurningHouse>
+      <div className={`transition-all duration-500 ${pulseClass}`}>
+        <PetSVG state={state} />
+      </div>
+    </BurningHouse>
   )
 }

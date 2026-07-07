@@ -224,9 +224,11 @@ export function PetSVG({ state }: Props) {
   return (
     <svg
       viewBox={`0 0 ${SZ} ${SZ}`}
+      width={1028}
+      height={1028}
       xmlns="http://www.w3.org/2000/svg"
       shapeRendering="crispEdges"
-      className="w-full max-w-sm mx-auto select-none"
+      style={{ display: 'block' }}
       aria-label={`Dog feeling ${state}`}
     >
       {/* ── Pixel grid ──────────────────────────────────────────────────── */}

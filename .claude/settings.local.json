@@ -4,7 +4,13 @@
       "PowerShell(node --version)",
       "PowerShell(npm --version)",
       "PowerShell(cd c:\\\\VSCode\\\\PumpPet\\\\server; $env:DATABASE_URL=\"postgresql://placeholder\"; npx prisma generate 2>&1 | Select-Object -Last 8)",
-      "PowerShell(Get-ChildItem -Recurse -Path \"C:\\\\VSCode\\\\PumpPet\\\\server\\\\src\" -File | Where-Object { $_.Extension -in @\\('.ts', '.tsx'\\) } | Select-Object -ExpandProperty FullName)"
+      "PowerShell(Get-ChildItem -Recurse -Path \"C:\\\\VSCode\\\\PumpPet\\\\server\\\\src\" -File | Where-Object { $_.Extension -in @\\('.ts', '.tsx'\\) } | Select-Object -ExpandProperty FullName)",
+      "Bash(Get-ChildItem -Path \"c:\\\\VSCode\\\\PumpPet\" -Recurse -Force)",
+      "Bash(Select-Object FullName, PSIsContainer)",
+      "Bash(Sort-Object FullName)",
+      "PowerShell(Get-ChildItem -Path \"c:\\\\VSCode\\\\PumpPet\" -Recurse -Force | Select-Object @{Name=\"Path\";Expression={$_.FullName.Replace\\('c:\\\\VSCode\\\\PumpPet\\\\',''\\)}}, PSIsContainer | Sort-Object Path | Select-Object -First 100)",
+      "PowerShell(ls -Recurse \"c:\\\\VSCode\\\\PumpPet\\\\client\\\\src\" | Select-Object -First 100 | Format-Table @{Name=\"Path\";Expression={$_.FullName.Replace\\('c:\\\\VSCode\\\\PumpPet\\\\client\\\\src\\\\',''\\)}}, PSIsContainer)",
+      "Bash(npm run *)"
     ]
   }
 }

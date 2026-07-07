@@ -1,19 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-bg:          #0d0600;
-  --color-surface:     #1a0c00;
-  --color-surface2:    #221200;
-  --color-border:      #3a1e08;
-  --color-border-lit:  #7c3d10;
+  --color-bg:          #050200;
+  --color-surface:     #100600;
+  --color-surface2:    #1a0c00;
+  --color-border:      #2e1606;
+  --color-border-lit:  #6a3010;
   --color-flame:       #f97316;
   --color-amber:       #f59e0b;
   --color-profit:      #4ade80;
   --color-loss:        #f87171;
-  --color-ink:         #f5e6d3;
-  --color-muted:       #7c5a38;
-  --color-dim:         #3a2010;
+  --color-ink:         #f0dfc8;
+  --color-muted:       #7a5438;
+  --color-dim:         #2e1c0c;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -21,12 +21,16 @@
 body {
   margin: 0;
   background: var(--color-bg);
-  font-family: 'Comic Neue', 'Comic Sans MS', cursive;
+  font-family: 'Space Grotesk', 'Comic Neue', cursive;
   color: var(--color-ink);
   min-height: 100svh;
 }
 
 #root { min-height: 100svh; }
+
+/* Tabular / mono numbers use JetBrains Mono */
+.tabular-nums { font-family: 'JetBrains Mono', monospace; }
+.font-mono    { font-family: 'JetBrains Mono', monospace; }
 
 ::-webkit-scrollbar       { width: 5px; }
 ::-webkit-scrollbar-track { background: var(--color-surface); }
