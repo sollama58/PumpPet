@@ -21,43 +21,48 @@ function AppInner() {
   const { trades, loading: tradesLoading } = useTrades(wallet)
   const pnl = usePnL(wallet, trades.length)
 
-  // Portfolio estimate: sum of what was spent (usdValueIn) across today's buys as a rough cost basis
+  // Total capital deployed today: all buy records (open + consumed).
+  // Consumed buys still carry their costBasisUsd, which is correct for
+  // computing "what % of what I invested did I gain/lose today".
   const portfolioUsd = useMemo(
     () => trades.filter(t => t.costBasisUsd != null).reduce((s, t) => s + (t.costBasisUsd ?? 0), 0),
     [trades],
   )
 
   return (
-    <div className="min-h-screen flex flex-col">
-      {/* Header */}
-      <header className="flex items-center justify-between px-4 py-3 border-b border-amber-900/50">
-        <h1 className="text-amber-400 text-2xl font-bold tracking-tight">
-          🐶 PumpPet
-        </h1>
+    <div className="min-h-screen flex flex-col bg-bg">
+      {/* ── Header ──────────────────────────────────────────────────────── */}
+      <header className="flex items-center justify-between px-5 py-3 border-b border-border">
+        <div className="flex items-baseline gap-2">
+          <span className="text-xl">🔥</span>
+          <h1 className="text-amber font-bold text-lg tracking-tight leading-none">PumpPet</h1>
+          <span className="text-muted text-xs hidden sm:block">your degen pet</span>
+        </div>
         <WalletButton />
       </header>
 
-      {/* Main */}
-      <main className="flex-1 flex flex-col lg:flex-row gap-6 p-4 lg:p-8 max-w-5xl mx-auto w-full">
+      {/* ── Main ────────────────────────────────────────────────────────── */}
+      <main className="flex-1 flex flex-col lg:flex-row gap-6 p-4 lg:p-8 max-w-5xl mx-auto w-full items-start">
         {/* Pet column */}
-        <section className="flex-1 flex flex-col items-center gap-4">
+        <section className="flex-1 flex flex-col items-center gap-3 lg:sticky lg:top-8">
           <Pet netPnlUsd={pnl?.netPnlUsd ?? null} portfolioUsd={portfolioUsd} />
           {!wallet && (
-            <p className="text-amber-700 text-sm text-center">
-              Connect your wallet to start tracking your trades.
+            <p className="text-muted text-sm text-center max-w-xs leading-relaxed">
+              Connect your wallet to see your pet react to today&apos;s trading P&amp;L.
             </p>
           )}
         </section>
 
         {/* Data column */}
-        <aside className="w-full lg:w-80 flex flex-col gap-4">
-          <PnLDashboard pnl={pnl} loading={tradesLoading && !pnl} />
+        <aside className="w-full lg:w-72 flex flex-col gap-3">
+          <PnLDashboard pnl={pnl} portfolioUsd={portfolioUsd} loading={tradesLoading && !pnl} />
           <TradeList trades={trades} loading={tradesLoading && trades.length === 0} />
         </aside>
       </main>
 
-      <footer className="text-center text-stone-700 text-xs py-4">
-        This is fine. Trades update every 30s.
+      {/* ── Footer ──────────────────────────────────────────────────────── */}
+      <footer className="text-center text-dim text-xs py-4 border-t border-border">
+        This is fine. &nbsp;•&nbsp; Trades sync every 30s
       </footer>
     </div>
   )

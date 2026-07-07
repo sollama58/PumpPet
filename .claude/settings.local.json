@@ -3,7 +3,8 @@
     "allow": [
       "PowerShell(node --version)",
       "PowerShell(npm --version)",
-      "PowerShell(cd c:\\\\VSCode\\\\PumpPet\\\\server; $env:DATABASE_URL=\"postgresql://placeholder\"; npx prisma generate 2>&1 | Select-Object -Last 8)"
+      "PowerShell(cd c:\\\\VSCode\\\\PumpPet\\\\server; $env:DATABASE_URL=\"postgresql://placeholder\"; npx prisma generate 2>&1 | Select-Object -Last 8)",
+      "PowerShell(Get-ChildItem -Recurse -Path \"C:\\\\VSCode\\\\PumpPet\\\\server\\\\src\" -File | Where-Object { $_.Extension -in @\\('.ts', '.tsx'\\) } | Select-Object -ExpandProperty FullName)"
     ]
   }
 }

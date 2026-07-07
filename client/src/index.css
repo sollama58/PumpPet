@@ -1,25 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
 @import "tailwindcss";
 
-:root {
-  --fire-orange: #ff6b00;
-  --fire-yellow: #ffd700;
-  --green-profit: #22c55e;
-  --red-loss: #ef4444;
+@theme {
+  --color-bg:          #0d0600;
+  --color-surface:     #1a0c00;
+  --color-surface2:    #221200;
+  --color-border:      #3a1e08;
+  --color-border-lit:  #7c3d10;
+  --color-flame:       #f97316;
+  --color-amber:       #f59e0b;
+  --color-profit:      #4ade80;
+  --color-loss:        #f87171;
+  --color-ink:         #f5e6d3;
+  --color-muted:       #7c5a38;
+  --color-dim:         #3a2010;
 }
 
-* {
-  box-sizing: border-box;
-}
+*, *::before, *::after { box-sizing: border-box; }
 
 body {
   margin: 0;
-  background: #1a0a00;
+  background: var(--color-bg);
   font-family: 'Comic Neue', 'Comic Sans MS', cursive;
-  color: #f5e6d3;
+  color: var(--color-ink);
   min-height: 100svh;
 }
 
-#root {
-  min-height: 100svh;
-}
+#root { min-height: 100svh; }
+
+::-webkit-scrollbar       { width: 5px; }
+::-webkit-scrollbar-track { background: var(--color-surface); }
+::-webkit-scrollbar-thumb { background: var(--color-border-lit); border-radius: 3px; }

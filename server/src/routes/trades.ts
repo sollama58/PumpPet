@@ -27,7 +27,9 @@ router.get('/sync', async (req: Request, res: Response) => {
 
     const rawTxs = await fetchNewSwaps(wallet, latest?.signature ?? undefined)
 
-    for (const tx of rawTxs) {
+    // Helius returns newest-first; process oldest-first so FIFO buy→sell matching
+    // works correctly when a buy and its sell both appear in the same fetch batch.
+    for (const tx of rawTxs.slice().reverse()) {
       if (!tx.tokenTransfers || tx.tokenTransfers.length < 2) continue
 
       const outgoing = tx.tokenTransfers.filter(t => t.fromUserAccount === wallet)
